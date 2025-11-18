@@ -6,14 +6,14 @@ from dotenv import load_dotenv
 from crewai import Agent, Task, Crew, LLM
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
-from pymongo import MongoClient
+# from pymongo import MongoClient
 from typing import List
 from fastapi import status
 
 # Load environment variables
 load_dotenv()
 api_key = os.getenv("GEMINI_API_KEY")
-MONGO_URI = os.getenv("MONGODB_URI")
+# MONGO_URI = os.getenv("MONGODB_URI")
 
 if not api_key:
     raise ValueError("Error: GEMINI_API_KEY is missing from the .env file.")
@@ -31,9 +31,9 @@ app.add_middleware(
 )
 
 # Connect to MongoDB
-client = MongoClient(MONGO_URI)
-db = client["chatbot"]
-messages_collection = db["message"]
+# client = MongoClient(MONGO_URI)
+# db = client["chatbot"]
+# messages_collection = db["message"]
 
 # Initialize LLM with Gemini
 llm = LLM(model="gemini/gemini-2.5-flash", api_key=api_key, verbose=True)
@@ -114,16 +114,16 @@ async def root():
     return {"status": "Backend is active"}
 
 
-@app.delete("/chat/history/{user_id}")
-async def delete_chat_history(user_id: str):
-    try:
-        result = messages_collection.delete_many({"user_id": user_id})
-        return {
-            "message": "Chat history deleted successfully.",
-            "deleted_count": result.deleted_count
-        }
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+# @app.delete("/chat/history/{user_id}")
+# async def delete_chat_history(user_id: str):
+#     try:
+#         result = messages_collection.delete_many({"user_id": user_id})
+#         return {
+#             "message": "Chat history deleted successfully.",
+#             "deleted_count": result.deleted_count
+#         }
+#     except Exception as e:
+#         raise HTTPException(status_code=500, detail=str(e))
 
 # API endpoint for chat requests
 
@@ -171,11 +171,11 @@ async def chat(request: ChatRequest):
         response = await asyncio.create_task(crew.kickoff_async())
         bot_response = response.raw
 
-        # Store messages in MongoDB
-        messages_collection.insert_many([
-            {"user_id": request.user_id, "role": "user", "text": request.message},
-            {"user_id": request.user_id, "role": "bot", "text": bot_response}
-        ])
+            # # Store messages in MongoDB
+            # messages_collection.insert_many([
+            #     {"user_id": request.user_id, "role": "user", "text": request.message},
+            #     {"user_id": request.user_id, "role": "bot", "text": bot_response}
+            # ])
 
         return {"response": bot_response}
     except asyncio.TimeoutError:
@@ -189,14 +189,14 @@ async def chat(request: ChatRequest):
 # Retrieve chat history
 
 
-@app.get("/chat/history/{user_id}")
-async def get_chat_history(user_id: str):
-    try:
-        messages = list(messages_collection.find(
-            {"user_id": user_id}, {"_id": 0}))
-        return {"user_id": user_id, "messages": messages}
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+# @app.get("/chat/history/{user_id}")
+# async def get_chat_history(user_id: str):
+#     try:
+#          messages = list(messages_collection.find(
+#             {"user_id": user_id}, {"_id": 0}))
+#         return {"user_id": user_id, "messages": messages}
+#     except Exception as e:
+#         raise HTTPException(status_code=500, detail=str(e))
 
 # Run the FastAPI server
 if __name__ == "__main__":

@@ -2,3 +2,4 @@
 check.py
 ollama_timer.py
 __pycache__/
+/.venv/
