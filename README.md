@@ -1,41 +1,51 @@
-# 🧑‍🎓 Askdemia 🤖
+![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey.svg)
 
-**Askdemia** is an academic-focused AI assistant built using **CrewAI** and intelligent autonomous agents. Designed to simplify learning and boost productivity, Askdemia helps users manage schedules, get quick answers to academic queries, and organize tasks through a natural, conversational interface.
+# ⚡ ChatterlyAI Agentic
 
-## 🚀 Features
+**ChatterlyAI-Agentic** is the dedicated agentic layer for the main **ChatterlyAI** open-source project.  
+This repository focuses on building autonomous AI agents, workflows, and backend logic using **CrewAI** and **Gemini**, powering advanced reasoning, planning, and academic assistance.
 
-- 🤖 Powered by CrewAI and multi-agent architecture  
-- 💬 Conversational academic assistant  
-- 📅 Smart schedule management  
-- 📚 Academic Q&A for student support  
-- ✅ Personalized work plans and productivity insights  
+It acts as the **brains** behind ChatterlyAI — modular, extendable, and production-oriented.
+
+---
+
+## 🚀 Core Features
+
+- 🤖 CrewAI-powered multi-agent pipelines
+- 🧠 Autonomous reasoning and task execution
+- 📚 Academic support logic (Q&A, structured guidance, explanations)
+- 📅 Schedule + work-plan generation for users
+- 🔌 Clean APIs to connect with the main ChatterlyAI app
+
+---
 
 ## 🛠️ Tech Stack
 
-- **Backend:** Python + FastAPI  
-- **AI Engine:** CrewAI + Custom Agents  
-- **LLM Integration:** Gemini  
+- **Python**
+- **FastAPI**
+- **CrewAI**
+- **Gemini LLM**
 
-## 🔧 Installation
+---
+
+## 📦 Installation
 
 ```bash
-git clone https://github.com/yourusername/askdemia.git
-cd askdemia
+git clone https://github.com/SwayamGupta12345/chatterlyAI-agentic
+cd chatterlyAI-agentic
 pip install -r requirements.txt
 ```
 
-### 📁 Set up your `.env` file with API keys:
+Environment Variables
 
-```env
-GEMINI_API_KEY=your_key
-```
+Create a .env file:
 
-### ▶️ Run the application:
+`GEMINI_API_KEY=your_key`
 
-```bash
-uvicorn backend:app --reload
-```
+##▶️ Run the Service
+`uvicorn backend:app --reload`
 
-## 🙋‍♂️ Author
+##👨‍💻 Author
 
-Made with 💙 by [Swayam Gupta](https://github.com/Swayam-Gupta)
+Built by Swayam Gupta
+GitHub: https://github.com/SwayamGupta12345
