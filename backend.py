@@ -19,10 +19,19 @@ if not api_key:
 # Initialize FastAPI app
 app = FastAPI()
 
-# Enable CORS for frontend connection
+# # Enable CORS for frontend connection
+# app.add_middleware(
+#     CORSMiddleware,
+#     allow_origins=["*"],  # Adjust this to your frontend domain
+#     allow_credentials=True,
+#     allow_methods=["*"],
+#     allow_headers=["*"],
+# )
+allowed_origin = os.getenv("ALLOWED_ORIGIN")
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Adjust this to your frontend domain
+    allow_origins=[allowed_origin],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
