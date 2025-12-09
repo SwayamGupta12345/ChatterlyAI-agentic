@@ -28,7 +28,7 @@ It acts as the **brains** behind ChatterlyAI — modular, extendable, and produc
 
 ---
 
-## 📦 Installation
+## 📦 Quickstart
 
 ```bash
 git clone https://github.com/SwayamGupta12345/chatterlyAI-agentic
@@ -40,12 +40,25 @@ Environment Variables
 
 Create a .env file:
 
-`GEMINI_API_KEY=your_key`
+```GEMINI_API_KEY=your_key```
 
-##▶️ Run the Service
-`uvicorn backend:app --reload`
+⚠️ Make sure to replace `your_key` with your actual Gemini API key.
 
-##👨‍💻 Author
+
+## ▶️ Run the Service
+
+```uvicorn backend:app 8080 --reload ```
+
+## Contributing 
+
+Contributions are welcome! Feel free to submit bug fixes, improvements, or suggestions via issues or pull requests.
+
+## License
+This project is licensed under the CC BY-NC 4.0 License.  
+You may use, modify, and share it for non-commercial purposes with attribution.
+
+
+## 👨‍💻 Author
 
 Built by Swayam Gupta
 GitHub: https://github.com/SwayamGupta12345
